@@ -20,13 +20,13 @@ const CreateAssignment = () => {
   const handleAddAssignment = (e) => {
     e.preventDefault();
     const form = e.target;
-    const title = form.title.value;
+    const assignment_title = form.assignment_title.value;
     const description = form.description.value;
-    const marks = form.marks.value;
+    const marks = Number(form.marks.value);
     const difficulty = form.difficulty.value;
     const thumbnail = form.thumbnail.value;
     const addAssignment = {
-      title,
+      assignment_title,
       description,
       marks,
       difficulty,
@@ -34,7 +34,7 @@ const CreateAssignment = () => {
       thumbnail,
       email: user.email,
     };
-    console.log(addAssignment);
+    // console.log(addAssignment);
 
     axiosInstance
       .post('/assignment', addAssignment)
@@ -66,8 +66,8 @@ const CreateAssignment = () => {
                 <input
                   required
                   type="text"
-                  name="title"
-                  placeholder="Enter title"
+                  name="assignment_title"
+                  placeholder="Enter assignment title"
                   className="input input-bordered"
                 />
               </div>

@@ -24,14 +24,14 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink
-        to="/assignment"
+        to="/assignments"
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
             : 'py-1 px-2 mr-2'
         }
       >
-        Assignment
+        Assignments
       </NavLink>
       <NavLink
         to="/create-assignment"

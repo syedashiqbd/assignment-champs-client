@@ -6,11 +6,12 @@ import Home from './pages/Home';
 import Root from './pages/Root';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Assignment from './pages/assignment';
 import AuthProvider from './provider/AuthProvider';
 import { Toaster } from 'react-hot-toast';
 import CreateAssignment from './pages/CreateAssignment';
 import PrivateRoute from './privateRoute/PrivateRoute';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Assignments from './pages/Assignments';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: '/assignment',
-        element: <Assignment></Assignment>,
+        path: '/assignments',
+        element: <Assignments></Assignments>,
       },
       {
         path: '/create-assignment',
@@ -46,11 +47,15 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <Toaster></Toaster>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Toaster></Toaster>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

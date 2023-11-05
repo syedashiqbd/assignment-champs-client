@@ -1,16 +1,13 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../hook/useAuth';
+import Loading1 from '../components/Loading1';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {
-    return (
-      <div className="h-screen grid place-items-center">
-        <span className="loading loading-spinner text-primary "></span>
-      </div>
-    );
+    return <Loading1></Loading1>;
   }
   if (user) {
     return children;
