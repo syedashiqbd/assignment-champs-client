@@ -7,7 +7,7 @@ import useAuth from '../hook/useAuth';
 import toast from 'react-hot-toast';
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, logInWithGoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -28,6 +28,19 @@ const Login = () => {
       })
       .catch(() => {
         toast.error('Invalid-login-credentials', {});
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    logInWithGoogle()
+      .then(() => {
+        toast.success('Successfully logged-in', {});
+
+        // navigate after login
+        navigate(location?.state ? location.state : '/');
+      })
+      .catch(() => {
+        toast.error('Logged In failed !!', {});
       });
   };
 
@@ -77,7 +90,7 @@ const Login = () => {
                 Or Sign In with
               </p>
               <div className="flex justify-center gap-4">
-                <Link>
+                <Link onClick={handleGoogleLogin}>
                   <div className="w-[55px] h-[55px] rounded-full bg-[#F5F5F8] flex items-center justify-center text-xl">
                     <FcGoogle></FcGoogle>
                   </div>
