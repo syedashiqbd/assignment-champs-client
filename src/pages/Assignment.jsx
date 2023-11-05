@@ -1,11 +1,11 @@
 import Navbar from '../components/Navbar';
 
-const Home = () => {
+const Assignment = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <p> HELLO I Am Home </p>
+      <p> HELLO I Am assignment </p>
     </div>
   );
 };
-export default Home;
+export default Assignment;
