@@ -3,8 +3,50 @@ import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import register from '../assets/register.svg';
+import useAuth from '../hook/useAuth';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
+  const { createUser } = useAuth();
+  const [registerError, setRegisterError] = useState('');
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photo, email, password);
+
+    if (password.length < 6) {
+      setRegisterError('Password should be at least 6 characters or longer');
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegisterError('You should at least 1 Uppercase');
+      return;
+    } else if (!/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)) {
+      setRegisterError('You should a special character');
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setRegisterError('');
+        toast.success('You have register successfully', {});
+        // e.target.reset();
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: photo,
+        });
+        // window.location.reload();
+      })
+      .catch((err) => toast.error(err.message, {}));
+  };
+
   return (
     <div>
       <Navbar></Navbar>
@@ -13,7 +55,7 @@ const Register = () => {
           <div className="w-full border p-16 rounded-lg">
             <h1 className="text-[40px] font-semibold text-center">Register</h1>
 
-            <form className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -41,7 +83,7 @@ const Register = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
@@ -53,11 +95,14 @@ const Register = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
+                {registerError && (
+                  <p className="text-red-700 mt-4">{registerError}</p>
+                )}
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Accept terms and conditions.
