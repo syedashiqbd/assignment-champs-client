@@ -42,7 +42,7 @@ const Register = () => {
           displayName: name,
           photoURL: photo,
         });
-        // window.location.reload();
+        window.location.reload();
       })
       .catch((err) => toast.error(err.message, {}));
   };

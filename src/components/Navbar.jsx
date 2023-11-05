@@ -1,6 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../hook/useAuth';
+import userDefaultPic from '../assets/user.png';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+
+  const handleLogOut = () => {
+    toast.success('Successfully logged-out');
+    logout();
+  };
+
   const navLinks = (
     <>
       <NavLink
@@ -23,16 +33,7 @@ const Navbar = () => {
       >
         Assignment
       </NavLink>
-      <NavLink
-        to="/login"
-        className={({ isActive }) =>
-          isActive
-            ? ' bg-primary text-white py-1 px-2 rounded  mr-4 '
-            : 'py-1 px-2 mr-4'
-        }
-      >
-        Login
-      </NavLink>
+
       <NavLink
         to="/register"
         className={({ isActive }) =>
@@ -81,7 +82,39 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        {user ? (
+          <div className="dropdown dropdown-end ">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded">
+                {user.photoURL ? (
+                  <img className="rounded-full" src={user.photoURL} />
+                ) : (
+                  <img src={userDefaultPic} />
+                )}
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 z-[2] p-2 shadow menu menu-sm dropdown-content border  rounded-md w-52 space-y-2"
+            >
+              <p className="font-bold mb-5 text-center border-b-2 border-black pb-2">
+                {user?.displayName}
+              </p>
+
+              <Link onClick={handleLogOut}>
+                <button className="btn btn-sm bg-primary text-white w-full">
+                  Logout
+                </button>
+              </Link>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="btn  bg-primary lg:text-base px-10 bg-transparent border border-primary text-primary hover:bg-primary hover:text-white">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
