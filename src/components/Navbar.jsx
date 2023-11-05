@@ -17,8 +17,8 @@ const Navbar = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? ' bg-primary text-white py-1 px-2 rounded  mr-4 '
-            : 'py-1 px-2 mr-4'
+            ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
+            : 'py-1 px-2 mr-2'
         }
       >
         Home
@@ -27,19 +27,29 @@ const Navbar = () => {
         to="/assignment"
         className={({ isActive }) =>
           isActive
-            ? ' bg-primary text-white py-1 px-2 rounded  mr-4 '
-            : 'py-1 px-2 mr-4'
+            ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
+            : 'py-1 px-2 mr-2'
         }
       >
         Assignment
+      </NavLink>
+      <NavLink
+        to="/create-assignment"
+        className={({ isActive }) =>
+          isActive
+            ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
+            : 'py-1 px-2 mr-2 '
+        }
+      >
+        Create Assignment
       </NavLink>
 
       <NavLink
         to="/register"
         className={({ isActive }) =>
           isActive
-            ? ' bg-primary text-white py-1 px-2 rounded  mr-4 '
-            : 'py-1 px-2 mr-4'
+            ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
+            : 'py-1 px-2 mr-2'
         }
       >
         Register

@@ -9,6 +9,8 @@ import Register from './pages/Register';
 import Assignment from './pages/assignment';
 import AuthProvider from './provider/AuthProvider';
 import { Toaster } from 'react-hot-toast';
+import CreateAssignment from './pages/CreateAssignment';
+import PrivateRoute from './privateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,15 @@ const router = createBrowserRouter([
         path: '/assignment',
         element: <Assignment></Assignment>,
       },
+      {
+        path: '/create-assignment',
+        element: (
+          <PrivateRoute>
+            <CreateAssignment></CreateAssignment>
+          </PrivateRoute>
+        ),
+      },
+
       {
         path: '/login',
         element: <Login></Login>,
