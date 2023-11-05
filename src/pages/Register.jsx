@@ -50,9 +50,9 @@ const Register = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto">
+      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border rounded-lg">
         <div className="w-1/2">
-          <div className="w-full border p-16 rounded-lg">
+          <div className="w-full  p-16 ">
             <h1 className="text-[40px] font-semibold text-center">Register</h1>
 
             <form onSubmit={handleRegister} className="card-body">
@@ -89,7 +89,6 @@ const Register = () => {
                   className="input input-bordered"
                 />
               </div>
-
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
@@ -112,27 +111,8 @@ const Register = () => {
               <div className="form-control mt-6">
                 <button className="btn bg-primary text-white">Register</button>
               </div>
-              <p className="divider my-8 text-lg font-medium">
-                Or Register with
-              </p>
-              <div className="flex justify-center gap-4">
-                <Link>
-                  <div className="w-[55px] h-[55px] rounded-full bg-[#F5F5F8] flex items-center justify-center text-xl">
-                    <FcGoogle></FcGoogle>
-                  </div>
-                </Link>
-                <Link>
-                  <div className="w-[55px] h-[55px] rounded-full bg-[#F5F5F8] flex items-center justify-center text-xl text-blue-700">
-                    <FaFacebookF></FaFacebookF>
-                  </div>
-                </Link>
-                <Link>
-                  <div className="w-[55px] h-[55px] rounded-full bg-[#F5F5F8] flex items-center justify-center text-xl text-blue-700 ">
-                    <FaLinkedinIn></FaLinkedinIn>
-                  </div>
-                </Link>
-              </div>
-              <p className="text-center mt-12 text-lg">
+
+              <p className="text-center mt-6 text-lg">
                 Already have an account?{' '}
                 <Link to="/login" className="text-primary  font-semibold">
                   Login

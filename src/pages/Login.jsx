@@ -1,22 +1,48 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
-import login from '../assets/login.svg';
-import { Link } from 'react-router-dom';
+import logIn from '../assets/login.svg';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../hook/useAuth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+  const { login } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    login(email, password)
+      .then(() => {
+        toast.success('Successfully logged-in', {});
+        // e.target.reset();
+
+        // navigate after login
+        navigate(location?.state ? location.state : '/');
+      })
+      .catch(() => {
+        toast.error('Invalid-login-credentials', {});
+      });
+  };
+
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto">
+      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border rounded-lg">
         <div className="w-1/2 my-auto">
-          <img src={login} className="w-[460px]" />
+          <img src={logIn} className="w-[460px]" />
         </div>
         <div className="w-1/2">
-          <div className="w-full border p-16 rounded-lg">
+          <div className="w-full  p-16 ">
             <h1 className="text-[40px] font-semibold text-center">Login</h1>
 
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -67,7 +93,7 @@ const Login = () => {
                   </div>
                 </Link>
               </div>
-              <p className="text-center mt-7 text-lg">
+              <p className="text-center mt-6 text-lg">
                 Do not have an account?{' '}
                 <Link to="/register" className="text-primary  font-semibold">
                   Register
