@@ -16,6 +16,7 @@ import Assignments from './pages/Assignments';
 import UpdateAssignment from './pages/UpdateAssignment';
 import useAxiosSecure from './hook/useAxiosSecure';
 import AssignmentDetails from './pages/AssignmentDetails';
+import SubmitAssignment from './pages/SubmitAssignment';
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,25 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AssignmentDetails></AssignmentDetails>
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          try {
+            const response = await useAxiosSecure().get(
+              `/assignments/${params.id}`
+            );
+            return response.data;
+          } catch (error) {
+            console.error('Error loading data:', error);
+            throw error;
+          }
+        },
+      },
+      {
+        path: '/submit-assignments',
+        element: (
+          <PrivateRoute>
+            <SubmitAssignment></SubmitAssignment>
           </PrivateRoute>
         ),
       },

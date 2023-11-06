@@ -75,7 +75,9 @@ const AssignmentCard = ({ assignment, refetch }) => {
       </figure>
       <div className="card-body">
         <h2 className="font-bold text-4xl">{assignment_title}</h2>
-        <p>{description}</p>
+        <p>
+          {description.length > 50 ? description.slice(0, 50) : description}...
+        </p>
         <div>
           <p className="text-2xl text-purple-600 font-medium">Marks: {marks}</p>
           <p>{formatDateForDisplay(dueDate)}</p>

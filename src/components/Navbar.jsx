@@ -43,6 +43,16 @@ const Navbar = () => {
       >
         Create Assignment
       </NavLink>
+      <NavLink
+        to="/submit-assignments"
+        className={({ isActive }) =>
+          isActive
+            ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
+            : 'py-1 px-2 mr-2 '
+        }
+      >
+        Submitted Assignment
+      </NavLink>
 
       <NavLink
         to="/register"

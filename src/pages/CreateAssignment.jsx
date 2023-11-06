@@ -1,6 +1,6 @@
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import Navbar from '../components/Navbar';
+
 import { useState } from 'react';
 import useAuth from '../hook/useAuth';
 import useAxiosSecure from '../hook/useAxiosSecure';
@@ -53,7 +53,6 @@ const CreateAssignment = () => {
 
   return (
     <div>
-  
       <div className="lg:w-[1280px] w-[400px] mx-auto">
         <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center ">
           <h1 className="divider mb-20 text-primary lg:text-4xl text-xl font-semibold">
