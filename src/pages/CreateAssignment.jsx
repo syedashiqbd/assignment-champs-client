@@ -8,10 +8,10 @@ import toast from 'react-hot-toast';
 
 const CreateAssignment = () => {
   const { user } = useAuth();
-  const [dueDate, setDueDate] = useState(new Date());
+  const [formattedDueDate, setFormattedDueDate] = useState(new Date());
   const axiosInstance = useAxiosSecure();
 
-  const formattedDueDate = dueDate.toLocaleDateString('en-GB', {
+  const dueDate = formattedDueDate.toLocaleDateString('en-GB', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
@@ -30,9 +30,9 @@ const CreateAssignment = () => {
       description,
       marks,
       difficulty,
-      formattedDueDate,
+      dueDate,
       thumbnail,
-      email: user.email,
+      submitBy: user.email,
     };
     // console.log(addAssignment);
 
@@ -120,8 +120,8 @@ const CreateAssignment = () => {
                 <ReactDatePicker
                   className="input input-bordered w-full text-gray-400"
                   placeholderText="Click to select a date"
-                  selected={dueDate}
-                  onChange={(date) => setDueDate(date)}
+                  selected={formattedDueDate}
+                  onChange={(date) => setFormattedDueDate(date)}
                 />
               </div>
               <div className="form-control  ">

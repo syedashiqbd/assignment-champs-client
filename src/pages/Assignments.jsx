@@ -11,6 +11,7 @@ const Assignments = () => {
     data: assignments,
     isLoading,
     isError,
+    refetch,
   } = useQuery({
     queryKey: ['assignment'],
     queryFn: async () => {
@@ -27,7 +28,7 @@ const Assignments = () => {
     <div>
       <Navbar></Navbar>
       <div className="lg:w-[1280px] w-[400px] mx-auto">
-        <h1 className="text-4xl text-primary font-semibold text-center divider mt-10  mb-20">
+        <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-purple-600 mt-20  mb-10">
           All Assignment at a Glance
         </h1>
         <div className="grid gap-8">
@@ -35,6 +36,7 @@ const Assignments = () => {
             <AssignmentCard
               key={assignment._id}
               assignment={assignment}
+              refetch={refetch}
             ></AssignmentCard>
           ))}
         </div>

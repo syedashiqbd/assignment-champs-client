@@ -4,7 +4,8 @@
         "description": "Complete a set of math problems.",
         "marks": 80,
         "difficulty": "medium",
-        "due_date": "2023-11-15",
+        "submitBy": "allah@ho.com",
+        "dueDate": "2023-11-15",
         "thumbnail": "https://images.unsplash.com/photo-1511629091441-ee46146481b6?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -12,7 +13,8 @@
         "description": "Create a presentation about a historical event.",
         "marks": 90,
         "difficulty": "hard",
-        "due_date": "2023-11-18",
+        "submitBy": "allah@ho.com",
+        "dueDate": "2023-11-18",
         "thumbnail": "https://images.unsplash.com/photo-1598124146163-36819847286d?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -20,7 +22,8 @@
         "description": "Write an essay on a classic novel.",
         "marks": 70,
         "difficulty": "medium",
-        "due_date": "2023-11-20",
+        "submitBy": "allah@ho.com",
+        "dueDate": "2023-11-20",
         "thumbnail": "https://images.unsplash.com/photo-1475243907012-e01b4e4b0a1b?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -28,7 +31,8 @@
         "description": "Write a lab report based on an experiment.",
         "marks": 85,
         "difficulty": "medium",
-        "due_date": "2023-11-22",
+        "submitBy": "allah@ho.com",
+        "dueDate": "2023-11-22",
         "thumbnail": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -36,7 +40,8 @@
         "description": "Develop a software project using a programming language of your choice.",
         "marks": 95,
         "difficulty": "hard",
-        "due_date": "2023-11-25",
+        "submitBy": "allah@mohan.com",
+        "dueDate": "2023-11-25",
         "thumbnail": "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -44,7 +49,8 @@
         "description": "Create a sketch of a famous artwork.",
         "marks": 75,
         "difficulty": "easy",
-        "due_date": "2023-11-28",
+        "submitBy": "allah@mohan.com",
+        "dueDate": "2023-11-28",
         "thumbnail": "https://images.unsplash.com/photo-1515096788709-a3cf4ce0a4a6?auto=format&fit=crop&q=80&w=1958&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -52,7 +58,8 @@
         "description": "Prepare a presentation on a physics topic.",
         "marks": 88,
         "difficulty": "medium",
-        "due_date": "2023-11-30",
+        "submitBy": "ashik.beki@gmail.com",
+        "dueDate": "2023-11-30",
         "thumbnail": "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -60,7 +67,8 @@
         "description": "Write a research paper on a biological topic.",
         "marks": 92,
         "difficulty": "hard",
-        "due_date": "2023-12-03",
+        "submitBy": "allah@mohan.com",
+        "dueDate": "2023-12-03",
         "thumbnail": "https://images.unsplash.com/photo-1669919174638-51069d852a40?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
@@ -68,7 +76,8 @@
         "description": "Translate a text from one language to another.",
         "marks": 78,
         "difficulty": "easy",
-        "due_date": "2023-12-05",
+        "submitBy": "ashik.beki@gmail.com",
+        "dueDate": "2023-12-05",
         "thumbnail": "https://images.unsplash.com/photo-1519734004356-f588de029302?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       }
     ]
