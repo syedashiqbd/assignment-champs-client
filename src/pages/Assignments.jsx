@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import Navbar from '../components/Navbar';
 import useAxiosSecure from '../hook/useAxiosSecure';
 import Loading1 from '../components/Loading1';
 import AssignmentCard from '../components/AssignmentCard';
@@ -26,7 +25,6 @@ const Assignments = () => {
 
   return (
     <div>
-  
       <div className="lg:w-[1280px] w-[400px] mx-auto">
         <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-purple-600 mt-20  mb-10">
           All Assignment at a Glance
