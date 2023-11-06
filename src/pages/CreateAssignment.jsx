@@ -12,7 +12,11 @@ const CreateAssignment = () => {
   const axiosInstance = useAxiosSecure();
   const navigate = useNavigate();
 
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState(() => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 2);
+    return currentDate;
+  });
 
   const handleAddAssignment = (e) => {
     e.preventDefault();
@@ -46,10 +50,10 @@ const CreateAssignment = () => {
         console.log(error);
       });
   };
-  
+
   return (
     <div>
-      <Navbar></Navbar>
+  
       <div className="lg:w-[1280px] w-[400px] mx-auto">
         <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center ">
           <h1 className="divider mb-20 text-primary lg:text-4xl text-xl font-semibold">
@@ -121,6 +125,7 @@ const CreateAssignment = () => {
                   placeholderText="Click to select a date"
                   selected={dueDate}
                   onChange={(date) => setDueDate(date)}
+                  minDate={dueDate}
                 />
               </div>
               <div className="form-control  ">

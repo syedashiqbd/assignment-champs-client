@@ -49,7 +49,7 @@ const Register = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+   
       <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border rounded-lg">
         <div className="w-1/2">
           <div className="w-full  p-16 ">
@@ -61,6 +61,7 @@ const Register = () => {
                   <span className="label-text">Name</span>
                 </label>
                 <input
+                  required
                   type="text"
                   name="name"
                   placeholder="name"
@@ -83,6 +84,7 @@ const Register = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  required
                   type="email"
                   name="email"
                   placeholder="email"
@@ -94,6 +96,7 @@ const Register = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                  required
                   type="password"
                   name="password"
                   placeholder="password"

@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Assignments from './pages/Assignments';
 import UpdateAssignment from './pages/UpdateAssignment';
 import useAxiosSecure from './hook/useAxiosSecure';
+import AssignmentDetails from './pages/AssignmentDetails';
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/assignment-details/:id',
+        element: (
+          <PrivateRoute>
+            <AssignmentDetails></AssignmentDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

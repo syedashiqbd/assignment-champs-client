@@ -10,11 +10,13 @@ const UpdateAssignment = () => {
   const axiosInstance = useAxiosSecure();
   const navigate = useNavigate();
   const id = assignment._id;
-  console.log(id);
 
   const [updateDueDate, setUpdateDueDate] = useState(
     new Date(assignment.dueDate)
   );
+
+  const currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() + 2);
 
   const handleUpdateAssignment = (e) => {
     e.preventDefault();
@@ -49,7 +51,7 @@ const UpdateAssignment = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+
       <div className="lg:w-[1280px] w-[400px] mx-auto">
         <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center ">
           <h1 className="divider mb-20 text-primary lg:text-4xl text-xl font-semibold">
@@ -126,6 +128,7 @@ const UpdateAssignment = () => {
                   placeholderText="Click to select a date"
                   selected={updateDueDate}
                   onChange={(date) => setUpdateDueDate(date)}
+                  minDate={currentDate}
                 />
               </div>
               <div className="form-control  ">

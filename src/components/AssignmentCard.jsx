@@ -2,7 +2,7 @@ import toast from 'react-hot-toast';
 import useAuth from '../hook/useAuth';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../hook/useAxiosSecure';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AssignmentCard = ({ assignment, refetch }) => {
   const axiosInstance = useAxiosSecure();
@@ -47,6 +47,10 @@ const AssignmentCard = ({ assignment, refetch }) => {
     }
   };
   const handleUpdate = () => {
+    if (!user?.email) {
+      navigate('/login');
+      return;
+    }
     if (user?.email == submitBy) {
       navigate(`/update-assignment/${_id}`);
     } else {
@@ -78,19 +82,24 @@ const AssignmentCard = ({ assignment, refetch }) => {
           {/* <p>{submitBy}</p> */}
         </div>
         <div className="mt-5">
-          <p className="text-3xl bg-primary text-white py-1 px-2 rounded max-w-max">
+          <p className="text-3xl bg-primary text-white py-1 px-2 rounded max-w-max uppercase">
             {difficulty}
           </p>
         </div>
       </div>
-      <div className="flex flex-col justify-end gap-4  p-5">
-        {/* <Link to={`/update-assignment/${_id}`}>
-          <button className="btn btn-primary">Update </button>
-        </Link> */}
-        <button onClick={handleUpdate} className="btn btn-primary">
-          Update{' '}
-        </button>
-        <button className="btn btn-neutral">View </button>
+      <div className="flex flex-col justify-end items-end gap-4 p-5">
+        {user?.email ? (
+          <button onClick={handleUpdate} className="btn btn-primary ">
+            Update <br /> Assignment
+          </button>
+        ) : (
+          ''
+        )}
+        <Link to={`/assignment-details/${_id}`}>
+          <button className="btn btn-neutral">
+            View <br /> Assignment{' '}
+          </button>
+        </Link>
       </div>
       {user?.email ? (
         <button
