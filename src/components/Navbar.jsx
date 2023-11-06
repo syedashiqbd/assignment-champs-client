@@ -110,6 +110,7 @@ const Navbar = () => {
               <p className="font-bold mb-5 text-center border-b-2 border-black pb-2">
                 {user?.displayName}
               </p>
+              <p className="text-center font-semibold">{user?.email}</p>
 
               <Link onClick={handleLogOut}>
                 <button className="btn btn-sm bg-primary text-white w-full">

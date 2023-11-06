@@ -1,20 +1,22 @@
 import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import Navbar from '../components/Navbar';
 import { useState } from 'react';
-import useAuth from '../hook/useAuth';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../hook/useAxiosSecure';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 
-const CreateAssignment = () => {
-  const { user } = useAuth();
+const UpdateAssignment = () => {
+  const assignment = useLoaderData();
   const axiosInstance = useAxiosSecure();
   const navigate = useNavigate();
+  const id = assignment._id;
+  console.log(id);
 
-  const [dueDate, setDueDate] = useState(new Date());
+  const [updateDueDate, setUpdateDueDate] = useState(
+    new Date(assignment.dueDate)
+  );
 
-  const handleAddAssignment = (e) => {
+  const handleUpdateAssignment = (e) => {
     e.preventDefault();
     const form = e.target;
     const assignment_title = form.assignment_title.value;
@@ -22,23 +24,21 @@ const CreateAssignment = () => {
     const marks = Number(form.marks.value);
     const difficulty = form.difficulty.value;
     const thumbnail = form.thumbnail.value;
-    const addAssignment = {
+    const updateAssignment = {
       assignment_title,
       description,
       marks,
       difficulty,
-      dueDate,
+      updateDueDate,
       thumbnail,
-      submitBy: user.email,
     };
-    // console.log(addAssignment);
 
     axiosInstance
-      .post('/assignment', addAssignment)
+      .put(`/assignments/${id}`, updateAssignment)
       .then((res) => {
         console.log(res.data);
-        if (res.data.insertedId) {
-          toast.success('Assignment added successfully');
+        if (res.data.modifiedCount > 0) {
+          toast.success('Assignment updated successfully');
           navigate('/assignments');
         }
       })
@@ -46,16 +46,17 @@ const CreateAssignment = () => {
         console.log(error);
       });
   };
-  
+
   return (
     <div>
       <Navbar></Navbar>
       <div className="lg:w-[1280px] w-[400px] mx-auto">
         <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center ">
           <h1 className="divider mb-20 text-primary lg:text-4xl text-xl font-semibold">
-            Add Assignment
+            Update Assignment
           </h1>
-          <form onSubmit={handleAddAssignment}>
+
+          <form onSubmit={handleUpdateAssignment}>
             {/* title and description */}
             <div className="lg:grid lg:gap-6 lg:grid-cols-2 grid-cols-1">
               <div className="form-control ">
@@ -66,6 +67,7 @@ const CreateAssignment = () => {
                   required
                   type="text"
                   name="assignment_title"
+                  defaultValue={assignment.assignment_title}
                   placeholder="Enter assignment title"
                   className="input input-bordered"
                 />
@@ -78,6 +80,7 @@ const CreateAssignment = () => {
                   required
                   type="text"
                   name="description"
+                  defaultValue={assignment.description}
                   placeholder="Enter description"
                   className="input input-bordered"
                 />
@@ -91,6 +94,7 @@ const CreateAssignment = () => {
                   required
                   type="number"
                   name="marks"
+                  defaultValue={assignment.marks}
                   placeholder="Enter marks"
                   className="input input-bordered"
                 />
@@ -101,6 +105,7 @@ const CreateAssignment = () => {
                 </label>
                 <select
                   name="difficulty"
+                  defaultValue={assignment.difficulty}
                   className="select select-bordered"
                   required
                 >
@@ -119,8 +124,8 @@ const CreateAssignment = () => {
                 <ReactDatePicker
                   className="input input-bordered w-full text-gray-400"
                   placeholderText="Click to select a date"
-                  selected={dueDate}
-                  onChange={(date) => setDueDate(date)}
+                  selected={updateDueDate}
+                  onChange={(date) => setUpdateDueDate(date)}
                 />
               </div>
               <div className="form-control  ">
@@ -131,6 +136,7 @@ const CreateAssignment = () => {
                   required
                   type="text"
                   name="thumbnail"
+                  defaultValue={assignment.thumbnail}
                   placeholder="Enter thumbnail URL"
                   className="input input-bordered"
                 />
@@ -138,7 +144,7 @@ const CreateAssignment = () => {
             </div>
             <input
               type="submit"
-              value="Add Assignment"
+              value="Update Assignment"
               className="btn w-full bg-primary text-white border-none mt-8 hover:bg-transparent hover:text-primary hover:border hover:outline hover:outline-primary"
             />
           </form>
@@ -147,4 +153,4 @@ const CreateAssignment = () => {
     </div>
   );
 };
-export default CreateAssignment;
+export default UpdateAssignment;

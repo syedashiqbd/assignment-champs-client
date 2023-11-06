@@ -2,9 +2,11 @@ import toast from 'react-hot-toast';
 import useAuth from '../hook/useAuth';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../hook/useAxiosSecure';
+import { useNavigate } from 'react-router-dom';
 
 const AssignmentCard = ({ assignment, refetch }) => {
   const axiosInstance = useAxiosSecure();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const {
     _id,
@@ -44,6 +46,23 @@ const AssignmentCard = ({ assignment, refetch }) => {
       toast.error("You can't DELETE others Assignments");
     }
   };
+  const handleUpdate = () => {
+    if (user?.email == submitBy) {
+      navigate(`/update-assignment/${_id}`);
+    } else {
+      toast.error("You can't UPDATE others Assignments");
+    }
+  };
+
+  // for date formate
+  const formatDateForDisplay = (isoDate) => {
+    const date = new Date(isoDate);
+    const formattedDate = `
+     ${date.getDate().toString().padStart(2, '0')}
+    -${(date.getMonth() + 1).toString().padStart(2, '0')}
+    -${date.getFullYear()}`;
+    return formattedDate;
+  };
 
   return (
     <div className="card card-side bg-base-100 shadow-xl relative ">
@@ -55,7 +74,7 @@ const AssignmentCard = ({ assignment, refetch }) => {
         <p>{description}</p>
         <div>
           <p className="text-2xl text-purple-600 font-medium">Marks: {marks}</p>
-          <p>{dueDate}</p>
+          <p>{formatDateForDisplay(dueDate)}</p>
           {/* <p>{submitBy}</p> */}
         </div>
         <div className="mt-5">
@@ -65,7 +84,12 @@ const AssignmentCard = ({ assignment, refetch }) => {
         </div>
       </div>
       <div className="flex flex-col justify-end gap-4  p-5">
-        <button className="btn btn-primary">Update </button>
+        {/* <Link to={`/update-assignment/${_id}`}>
+          <button className="btn btn-primary">Update </button>
+        </Link> */}
+        <button onClick={handleUpdate} className="btn btn-primary">
+          Update{' '}
+        </button>
         <button className="btn btn-neutral">View </button>
       </div>
       {user?.email ? (

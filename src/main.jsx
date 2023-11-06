@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -12,6 +13,8 @@ import CreateAssignment from './pages/CreateAssignment';
 import PrivateRoute from './privateRoute/PrivateRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Assignments from './pages/Assignments';
+import UpdateAssignment from './pages/UpdateAssignment';
+import useAxiosSecure from './hook/useAxiosSecure';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,25 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-
+      {
+        path: '/update-assignment/:id',
+        element: (
+          <PrivateRoute>
+            <UpdateAssignment></UpdateAssignment>
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          try {
+            const response = await useAxiosSecure().get(
+              `/assignments/${params.id}`
+            );
+            return response.data;
+          } catch (error) {
+            console.error('Error loading data:', error);
+            throw error;
+          }
+        },
+      },
       {
         path: '/login',
         element: <Login></Login>,

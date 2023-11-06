@@ -13,7 +13,7 @@ const Assignments = () => {
     isError,
     refetch,
   } = useQuery({
-    queryKey: ['assignment'],
+    queryKey: ['assignments'],
     queryFn: async () => {
       const response = await axiosInstance.get('/assignments');
       const data = await response.data;
