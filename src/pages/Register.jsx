@@ -49,7 +49,6 @@ const Register = () => {
 
   return (
     <div>
-   
       <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border rounded-lg">
         <div className="w-1/2">
           <div className="w-full  p-16 ">

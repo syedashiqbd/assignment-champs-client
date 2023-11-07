@@ -51,7 +51,6 @@ const UpdateAssignment = () => {
 
   return (
     <div>
-
       <div className="lg:w-[1280px] w-[400px] mx-auto">
         <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center ">
           <h1 className="divider mb-20 text-primary lg:text-4xl text-xl font-semibold">

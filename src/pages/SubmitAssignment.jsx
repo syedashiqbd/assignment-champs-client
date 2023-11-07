@@ -32,15 +32,19 @@ const SubmitAssignment = () => {
       <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-green-600 mt-20  mb-10">
         All Submitted Assignment
       </h1>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
-        {submitAssignments?.map((submitAssignment) => (
-          <SubmitAssignmentCard
-            key={submitAssignment._id}
-            submitAssignment={submitAssignment}
-            refetch={refetch}
-          ></SubmitAssignmentCard>
-        ))}
-      </div>
+      {isLoading ? (
+        <Loading1></Loading1>
+      ) : (
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
+          {submitAssignments?.map((submitAssignment) => (
+            <SubmitAssignmentCard
+              key={submitAssignment._id}
+              submitAssignment={submitAssignment}
+              refetch={refetch}
+            ></SubmitAssignmentCard>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

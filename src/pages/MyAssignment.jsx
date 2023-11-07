@@ -36,15 +36,19 @@ const MyAssignment = () => {
       <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-green-600 mt-20  mb-10">
         My Assignments
       </h1>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
-        {myAssignments?.map((submitAssignment) => (
-          <SubmitAssignmentCard
-            key={submitAssignment._id}
-            submitAssignment={submitAssignment}
-            refetch={refetch}
-          ></SubmitAssignmentCard>
-        ))}
-      </div>
+      {isLoading ? (
+        <Loading1></Loading1>
+      ) : (
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
+          {myAssignments?.map((submitAssignment) => (
+            <SubmitAssignmentCard
+              key={submitAssignment._id}
+              submitAssignment={submitAssignment}
+              refetch={refetch}
+            ></SubmitAssignmentCard>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

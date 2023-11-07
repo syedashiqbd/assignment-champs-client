@@ -69,7 +69,7 @@ const AssignmentCard = ({ assignment, refetch }) => {
   };
 
   return (
-    <div className="card card-side bg-base-100 shadow-xl relative ">
+    <div className="card card-side bg-base-100 shadow-xl relative border ">
       <figure className="w-1/3 h-[350px]  ">
         <img src={thumbnail} className="h-[350px] w-full object-cover" />
       </figure>
@@ -80,14 +80,22 @@ const AssignmentCard = ({ assignment, refetch }) => {
         </p>
         <div>
           <p className="text-2xl text-purple-600 font-medium">Marks: {marks}</p>
-          <p className="bg-green-700 inline text-white p-1 text-sm">
+          <p className="bg-green-700 inline text-white p-1 text-sm ">
             {submitBy}
           </p>
           <p>{formatDateForDisplay(dueDate)}</p>
           {/* <p>{submitBy}</p> */}
         </div>
         <div className="mt-5">
-          <p className="text-3xl bg-primary text-white py-1 px-2 rounded max-w-max uppercase">
+          <p
+            className={
+              difficulty === 'easy'
+                ? 'text-3xl bg-green-600 text-white py-1 px-2 rounded max-w-max uppercase'
+                : difficulty === 'medium'
+                ? 'text-3xl bg-orange-400 text-white py-1 px-2 rounded max-w-max uppercase'
+                : 'text-3xl bg-primary text-white py-1 px-2 rounded max-w-max uppercase'
+            }
+          >
             {difficulty}
           </p>
         </div>

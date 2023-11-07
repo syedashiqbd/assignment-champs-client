@@ -53,7 +53,7 @@ const CreateAssignment = () => {
 
   return (
     <div>
-      <div className="lg:w-[1280px] w-[400px] mx-auto">
+      <div className="lg:w-[1200px] w-[400px] mx-auto">
         <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center ">
           <h1 className="divider mb-20 text-primary lg:text-4xl text-xl font-semibold">
             Add Assignment
@@ -107,7 +107,9 @@ const CreateAssignment = () => {
                   className="select select-bordered"
                   required
                 >
-                  <option value="">Select difficulty</option>
+                  <option disabled selected value="">
+                    Select difficulty
+                  </option>
                   <option value="easy">Easy</option>
                   <option value="medium">Medium</option>
                   <option value="hard">Hard</option>

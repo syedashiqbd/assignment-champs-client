@@ -111,11 +111,11 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end tooltip-left" data-tip="hello">
         {user ? (
           <div className="dropdown dropdown-end ">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded">
+              <div className="w-10 rounded  ">
                 {user.photoURL ? (
                   <img className="rounded-full" src={user.photoURL} />
                 ) : (
@@ -133,7 +133,7 @@ const Navbar = () => {
               <p className="text-center font-semibold">{user?.email}</p>
 
               <Link onClick={handleLogOut}>
-                <button className="btn btn-sm bg-primary text-white w-full">
+                <button className="btn btn-sm bg-primary text-white w-full ">
                   Logout
                 </button>
               </Link>
