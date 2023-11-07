@@ -25,7 +25,8 @@ const SubmitAssignment = () => {
   // console.log(submitAssignments);
 
   if (isLoading) return <Loading1></Loading1>;
-  if (isError) return <h1>Error Loading Data !!!</h1>;
+  // if (isError)
+  //   return <h1 className="text-center text-primary">Error Loading Data !!!</h1>;
 
   return (
     <div className="lg:w-[1280px] w-[400px] mx-auto">

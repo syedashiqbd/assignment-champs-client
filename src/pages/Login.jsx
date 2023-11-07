@@ -19,27 +19,27 @@ const Login = () => {
 
     login(email, password)
       .then(() => {
-        toast.success('Successfully logged-in', {});
+        toast.success('Successfully logged-in');
         // e.target.reset();
 
         // navigate after login
         navigate(location?.state ? location.state : '/');
       })
       .catch(() => {
-        toast.error('Invalid-login-credentials', {});
+        toast.error('Invalid-login-credentials');
       });
   };
 
   const handleGoogleLogin = () => {
     logInWithGoogle()
       .then(() => {
-        toast.success('Successfully logged-in', {});
+        toast.success('Successfully logged-in');
 
         // navigate after login
         navigate(location?.state ? location.state : '/');
       })
       .catch(() => {
-        toast.error('Logged In failed !!', {});
+        toast.error('Logged In failed !!');
       });
   };
 

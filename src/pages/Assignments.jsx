@@ -3,9 +3,14 @@ import useAxiosSecure from '../hook/useAxiosSecure';
 import Loading1 from '../components/Loading1';
 import AssignmentCard from '../components/AssignmentCard';
 import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const Assignments = () => {
   const [difficulty, setDifficulty] = useState('');
+  const [limit, setLimit] = useState(4);
+  const [page, setPage] = useState(0);
+  const { total } = useLoaderData();
+
   const axiosInstance = useAxiosSecure();
   const {
     data: assignments,
@@ -13,10 +18,10 @@ const Assignments = () => {
     isError,
     refetch,
   } = useQuery({
-    queryKey: ['assignments', difficulty],
+    queryKey: ['assignments', difficulty, page, limit],
     queryFn: async () => {
       const response = await axiosInstance.get(
-        `/assignments?difficulty=${difficulty}`
+        `/assignments?difficulty=${difficulty}&page=${page}&limit=${limit}`
       );
       const data = await response.data;
       return data;
@@ -24,7 +29,23 @@ const Assignments = () => {
     retry: 3,
   });
 
-  if (isError) return <h1>Error Loading Data !!!</h1>;
+  const totalCount = Math.ceil(total / limit);
+  console.log(totalCount);
+  const totalButton = [...Array(totalCount).keys()];
+
+  const handlePrevious = () => {
+    if (page > 0) {
+      setPage(page - 1);
+    }
+  };
+  const handleNext = () => {
+    if (page < totalButton.length - 1) {
+      setPage(page + 1);
+    }
+  };
+  console.log(page);
+  if (isError)
+    return <h1 className="text-center text-primary">Error Loading Data !!!</h1>;
 
   return (
     <div>
@@ -59,6 +80,37 @@ const Assignments = () => {
             ))}
           </div>
         )}
+        <div className="join my-6 flex justify-center">
+          <button
+            onClick={handlePrevious}
+            className="join-item bg-primary btn text-white"
+          >
+            Prev
+          </button>
+          {totalButton?.map((item, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                key={pageNumber}
+                onClick={() => setPage(item)}
+                className={
+                  item === page
+                    ? 'join-item bg-green-700 btn text-white'
+                    : 'join-item  bg-primary btn text-white'
+                }
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+
+          <button
+            onClick={handleNext}
+            className="join-item bg-primary btn text-white"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -18,11 +18,13 @@ import useAxiosSecure from './hook/useAxiosSecure';
 import AssignmentDetails from './pages/AssignmentDetails';
 import SubmitAssignment from './pages/SubmitAssignment';
 import MyAssignment from './pages/MyAssignment';
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -31,6 +33,15 @@ const router = createBrowserRouter([
       {
         path: '/assignments',
         element: <Assignments></Assignments>,
+        loader: async () => {
+          try {
+            const response = await useAxiosSecure().get(`/assignmentCount`);
+            return response.data;
+          } catch (error) {
+            console.error('Error loading data:', error);
+            throw error;
+          }
+        },
       },
       {
         path: '/create-assignment',

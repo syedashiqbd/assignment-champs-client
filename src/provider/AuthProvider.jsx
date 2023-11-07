@@ -9,6 +9,7 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+import useAxiosSecure from '../hook/useAxiosSecure';
 
 const auth = getAuth(app);
 export const AuthContext = createContext();
@@ -17,6 +18,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const axiosInstance = useAxiosSecure();
 
   // SignIn with google
   const logInWithGoogle = () => {
@@ -35,23 +37,36 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // logout user
+  const logout = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
   //   auth state observer
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log('user state observer', currentUser);
       setUser(currentUser);
       setLoading(false);
+      // generate token when user email is exist
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+
+      if (currentUser) {
+        axiosInstance.post('/jwt', loggedUser).then((res) => {
+          console.log(res.data);
+        });
+      } else {
+        axiosInstance.post('/logout', loggedUser).then((res) => {
+          console.log(res.data);
+        });
+      }
     });
     return () => {
       unSubscribe();
     };
-  }, []);
-
-  // logout user
-  const logout = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
+  }, [axiosInstance, user?.email]);
 
   const authContent = {
     user,
