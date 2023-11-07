@@ -14,6 +14,8 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
     note,
     submitBy,
     status,
+    givenMark,
+    markBy,
   } = submitAssignment;
   const { user } = useAuth();
   const axiosInstance = useAxiosSecure();
@@ -93,12 +95,21 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
           </div>
         </div>
         <div className="p-6  w-full text-center">
-          <button
-            className="btn btn-success border-none w-full"
-            onClick={handleAllow}
-          >
-            Give Marks
-          </button>
+          {status === 'pending' ? (
+            <button
+              className="btn btn-success border-none w-full"
+              onClick={handleAllow}
+            >
+              Give Marks
+            </button>
+          ) : (
+            <div>
+              <p className="font-bold text-red-600 text-xl">
+                You got : {givenMark}
+              </p>
+              <p>Evaluated by: {markBy}</p>
+            </div>
+          )}
         </div>
       </div>
 

@@ -11,7 +11,7 @@ const MyAssignment = () => {
   console.log(userEmail);
 
   const {
-    data: submitAssignments,
+    data: myAssignments,
     isLoading,
     isError,
     refetch,
@@ -19,8 +19,8 @@ const MyAssignment = () => {
     queryKey: ['submitAssignments'],
     queryFn: async () => {
       const response = await axiosInstance.get(
-        `/submitAssignment`
-        // `/submitAssignment?email=${userEmail}`
+        // `/submitAssignment`
+        `/submitAssignment?submitBy=${userEmail}`
       );
       const data = await response.data;
       return data;
@@ -37,7 +37,7 @@ const MyAssignment = () => {
         My Assignments
       </h1>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
-        {submitAssignments?.map((submitAssignment) => (
+        {myAssignments?.map((submitAssignment) => (
           <SubmitAssignmentCard
             key={submitAssignment._id}
             submitAssignment={submitAssignment}

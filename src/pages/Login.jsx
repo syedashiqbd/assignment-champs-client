@@ -1,6 +1,5 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
-import Navbar from '../components/Navbar';
 import logIn from '../assets/login.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hook/useAuth';
