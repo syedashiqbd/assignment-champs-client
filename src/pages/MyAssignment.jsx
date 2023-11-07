@@ -33,9 +33,11 @@ const MyAssignment = () => {
   if (isError) return <h1>Error Loading Data !!!</h1>;
   return (
     <div className="lg:w-[1280px] w-[400px] mx-auto">
-      <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-green-600 mt-20  mb-10">
-        My Assignments
-      </h1>
+      <div className="flex justify-between items-center mt-20  mb-10 border-purple-700 border-2 py-7 px-4 rounded-lg">
+        <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-amber-400 ">
+          My Assignment
+        </h1>
+      </div>
       {isLoading ? (
         <Loading1></Loading1>
       ) : (

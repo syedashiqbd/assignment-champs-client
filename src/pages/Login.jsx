@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border rounded-lg">
+      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border border-amber-600 rounded-lg">
         <div className="w-1/2 my-auto">
           <img src={logIn} className="w-[460px]" />
         </div>
