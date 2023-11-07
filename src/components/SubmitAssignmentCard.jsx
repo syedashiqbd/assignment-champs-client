@@ -1,8 +1,22 @@
 import { useState } from 'react';
+import useAuth from '../hook/useAuth';
+import toast from 'react-hot-toast';
+import useAxiosSecure from '../hook/useAxiosSecure';
 
-const SubmitAssignmentCard = ({ submitAssignment }) => {
-  const { _id, assignment_title, marks, thumbnail, name, pdf, note } =
-    submitAssignment;
+const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
+  const {
+    _id,
+    assignment_title,
+    marks,
+    thumbnail,
+    name,
+    pdf,
+    note,
+    submitBy,
+    status,
+  } = submitAssignment;
+  const { user } = useAuth();
+  const axiosInstance = useAxiosSecure();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -13,20 +27,51 @@ const SubmitAssignmentCard = ({ submitAssignment }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  // console.log(user.email);
+  // console.log(submitBy);
+
+  const handleAllow = () => {
+    if (user?.email === submitBy) {
+      toast.error('You should not mark your own Assignments');
+    } else {
+      openModal();
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const givenMark = Number(form.givenMark.value);
+    const feedback = form.feedback.value;
+    const submitMark = {
+      givenMark,
+      feedback,
+      markBy: user.email,
+      status: 'completed',
+    };
+    closeModal();
+    axiosInstance
+      .patch(`/submitAssignment/${_id}`, submitMark)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          toast.success('Mark given successfully');
+          refetch();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="lg:w-[1280px] w-[400px] mx-auto">
       <div className="max-w-sm h-[550px] card bg-base-100 shadow-xl relative rounded-lg  ">
         <figure className=" ">
-          <img src={thumbnail} className="h-[300px] object-cover" />
+          <img src={thumbnail} className="h-[300px] w-full object-cover" />
         </figure>
         <div className="card-body">
-          <h2 className="font-bold text-3xl ">
-            {assignment_title.length > 15
-              ? assignment_title.slice(0, 15)
-              : assignment_title}
-            ...
-          </h2>
+          <h2 className="font-bold text-2xl ">{assignment_title}</h2>
           <p>Submitted by: {name}</p>
           <div className="flex justify-between items-center mt-5 ">
             <div className="border  rounded border-primary">
@@ -35,8 +80,14 @@ const SubmitAssignmentCard = ({ submitAssignment }) => {
               </p>
             </div>
             <div>
-              <p className="text-2xl bg-red-600 text-white py-1 px-2 rounded max-w-max uppercase">
-                Pending
+              <p
+                className={
+                  status === 'pending'
+                    ? 'text-2xl bg-red-600 text-white py-1 px-2 rounded max-w-max uppercase'
+                    : 'text-2xl bg-green-600 text-white py-1 px-2 rounded max-w-max uppercase'
+                }
+              >
+                {status}
               </p>
             </div>
           </div>
@@ -44,7 +95,7 @@ const SubmitAssignmentCard = ({ submitAssignment }) => {
         <div className="p-6  w-full text-center">
           <button
             className="btn btn-success border-none w-full"
-            onClick={openModal}
+            onClick={handleAllow}
           >
             Give Marks
           </button>
@@ -59,7 +110,7 @@ const SubmitAssignmentCard = ({ submitAssignment }) => {
           open
         >
           <div className="modal-box ">
-            <form method=" modal-action">
+            <form onSubmit={handleSubmit} method=" modal-action">
               <div className="grid gap-3 grid-cols-1">
                 <div className="form-control  ">
                   <label className="label">

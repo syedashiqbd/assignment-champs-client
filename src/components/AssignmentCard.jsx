@@ -51,7 +51,7 @@ const AssignmentCard = ({ assignment, refetch }) => {
       navigate('/login');
       return;
     }
-    if (user?.email == submitBy) {
+    if (user?.email === submitBy) {
       navigate(`/update-assignment/${_id}`);
     } else {
       toast.error("You can't UPDATE others Assignments");
@@ -70,8 +70,8 @@ const AssignmentCard = ({ assignment, refetch }) => {
 
   return (
     <div className="card card-side bg-base-100 shadow-xl relative ">
-      <figure className="w-1/3  ">
-        <img src={thumbnail} className="h-[300px] object-cover" />
+      <figure className="w-1/3 h-[350px]  ">
+        <img src={thumbnail} className="h-[350px] w-full object-cover" />
       </figure>
       <div className="card-body">
         <h2 className="font-bold text-4xl">{assignment_title}</h2>
@@ -80,6 +80,9 @@ const AssignmentCard = ({ assignment, refetch }) => {
         </p>
         <div>
           <p className="text-2xl text-purple-600 font-medium">Marks: {marks}</p>
+          <p className="bg-green-700 inline text-white p-1 text-sm">
+            {submitBy}
+          </p>
           <p>{formatDateForDisplay(dueDate)}</p>
           {/* <p>{submitBy}</p> */}
         </div>

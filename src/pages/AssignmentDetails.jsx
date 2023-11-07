@@ -23,6 +23,9 @@ const AssignmentDetails = () => {
     submitBy,
   } = assignment;
 
+  console.log('submit by:', submitBy);
+  console.log('trying to submit:', user.email);
+
   const formatDateForDisplay = (isoDate) => {
     const date = new Date(isoDate);
     const formattedDate = `
@@ -42,6 +45,14 @@ const AssignmentDetails = () => {
     setIsModalOpen(false);
   };
 
+  const handleAllow = () => {
+    if (user?.email === submitBy) {
+      toast.error('You are not allowed to submit your own Assignments');
+    } else {
+      openModal();
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -58,6 +69,7 @@ const AssignmentDetails = () => {
       pdf,
       note,
       name,
+      status: 'pending',
     };
     closeModal();
     axiosInstance
@@ -103,7 +115,7 @@ const AssignmentDetails = () => {
         <div className="p-6  w-full text-center">
           <button
             className="btn btn-neutral bg-primary text-white border-none lg:w-1/3"
-            onClick={openModal}
+            onClick={handleAllow}
           >
             Take Assignment
           </button>
@@ -141,7 +153,7 @@ const AssignmentDetails = () => {
                     name="note"
                     placeholder="Enter note"
                     cols="30"
-                    rows="10"
+                    rows="5"
                   ></textarea>
                 </div>
               </div>

@@ -17,6 +17,7 @@ import UpdateAssignment from './pages/UpdateAssignment';
 import useAxiosSecure from './hook/useAxiosSecure';
 import AssignmentDetails from './pages/AssignmentDetails';
 import SubmitAssignment from './pages/SubmitAssignment';
+import MyAssignment from './pages/MyAssignment';
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <SubmitAssignment></SubmitAssignment>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/my-assignment',
+        element: (
+          <PrivateRoute>
+            <MyAssignment></MyAssignment>
           </PrivateRoute>
         ),
       },
