@@ -19,7 +19,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
-            : 'py-1 px-2 mr-2 text-primary'
+            : 'py-1 px-2 mr-2 text-blue-600'
         }
       >
         Home
@@ -29,7 +29,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
-            : 'py-1 px-2 mr-2 text-primary'
+            : 'py-1 px-2 mr-2 text-blue-600'
         }
       >
         Assignments
@@ -39,7 +39,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
-            : 'py-1 px-2 mr-2 text-primary '
+            : 'py-1 px-2 mr-2 text-blue-600 '
         }
       >
         Create Assignment
@@ -49,7 +49,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
-            : 'py-1 px-2 mr-2 text-primary '
+            : 'py-1 px-2 mr-2 text-blue-600 '
         }
       >
         Submitted Assignment
@@ -59,7 +59,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
-            : 'py-1 px-2 mr-2 text-primary '
+            : 'py-1 px-2 mr-2 text-blue-600 '
         }
       >
         My Assignment
@@ -70,7 +70,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
-            : 'py-1 px-2 mr-2 text-primary'
+            : 'py-1 px-2 mr-2 text-blue-600'
         }
       >
         Register
