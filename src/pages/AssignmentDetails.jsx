@@ -140,7 +140,7 @@ const AssignmentDetails = () => {
                     required
                     type="text"
                     name="pdf"
-                    placeholder="Enter Pdf Link"
+                    placeholder="Enter Pdf Preview Link"
                     className="input input-bordered"
                   />
                 </div>

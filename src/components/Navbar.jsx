@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../hook/useAuth';
 import userDefaultPic from '../assets/user.png';
 import toast from 'react-hot-toast';
+import logo from '../assets/Assignment.png';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -103,10 +104,7 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className=" bg-primary p-2 rounded text-white text-xl">
-          Assignment <br />
-          Champs
-        </a>
+        <img src={logo} className="w-20" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>

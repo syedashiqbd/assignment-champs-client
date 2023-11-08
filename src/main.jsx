@@ -19,12 +19,13 @@ import AssignmentDetails from './pages/AssignmentDetails';
 import SubmitAssignment from './pages/SubmitAssignment';
 import MyAssignment from './pages/MyAssignment';
 import ErrorPage from './pages/ErrorPage';
+import PDFViewer from './components/PDFViewer';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root></Root>,
-    errorElement: <ErrorPage></ErrorPage>,
+    // errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      // {
+      //   path: '/pdf',
+      //   element: <PDFViewer></PDFViewer>,
+      // },
     ],
   },
 ]);

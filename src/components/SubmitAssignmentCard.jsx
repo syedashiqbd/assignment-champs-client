@@ -17,10 +17,18 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
     givenMark,
     markBy,
   } = submitAssignment;
-  const { user } = useAuth();
-  const axiosInstance = useAxiosSecure();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPdfOpen, setIsPdfOpen] = useState(false);
+
+  // const [showPDFViewer, setShowPDFViewer] = useState(false);
+
+  // const pdfFileUrl =
+  //   'https://drive.google.com/file/d/17kJLmzndUY4elLZRmKb_f0K1UY3CZyuO/preview';
+  // // const pdfFileUrl = pdfFile;
+
+  const { user } = useAuth();
+  const axiosInstance = useAxiosSecure();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -29,8 +37,14 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  // console.log(user.email);
-  // console.log(submitBy);
+
+  const openPdfModal = () => {
+    setIsPdfOpen(true);
+  };
+
+  const closePdfModal = () => {
+    setIsPdfOpen(false);
+  };
 
   const handleAllow = () => {
     if (user?.email === submitBy) {
@@ -94,6 +108,18 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
             </div>
           </div>
         </div>
+
+        <div className="text-center">
+          <button
+            onClick={() => {
+              openPdfModal();
+            }}
+            className="btn btn-primary"
+          >
+            View Submitted PDF
+          </button>
+        </div>
+
         <div className="p-6  w-full text-center">
           {status === 'pending' ? (
             <button
@@ -117,7 +143,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
       {isModalOpen && (
         <dialog
           id="my_modal_5"
-          className="modal modal-bottom sm:modal-middle"
+          className="modal modal-bottom max-w-max mx-auto"
           open
         >
           <div className="modal-box ">
@@ -132,7 +158,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
                     type="text"
                     name="pdf"
                     defaultValue={pdf}
-                    placeholder="Enter Pdf Link"
+                    placeholder="Enter GooglePdf Link"
                     className="input input-bordered"
                   />
                 </div>
@@ -190,6 +216,30 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
                 </div>
               </div>
             </form>
+          </div>
+        </dialog>
+      )}
+      {/* Pdf Modal */}
+      {isPdfOpen && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-top max-w-max  mx-auto"
+          open
+        >
+          <div className="modal-box text-center ">
+            <iframe
+              src={pdf}
+              width="740"
+              height="1140"
+              allow="autoplay"
+            ></iframe>
+
+            <button
+              className="btn btn-primary text-white mt-7"
+              onClick={closePdfModal}
+            >
+              Close
+            </button>
           </div>
         </dialog>
       )}
