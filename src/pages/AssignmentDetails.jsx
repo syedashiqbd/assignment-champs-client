@@ -87,25 +87,28 @@ const AssignmentDetails = () => {
   };
 
   return (
-    <div className="lg:w-[1280px] w-[400px] mx-auto">
-      <h1 className="divider mb-12 text-primary lg:text-4xl text-xl font-semibold">
-        {assignment_title} Assignment Details
+    <div className="lg:w-[1280px] md:w-[780px] w-[400px] mx-auto">
+      <h1 className="divider  text-primary text-center mt-14 lg:mb-20 mb-10 lg:text-4xl text-xl font-semibold">
+        {assignment_title} <br /> Assignment Details
       </h1>
-      <div className="card bg-base-100 shadow-xl relative ">
+      <div className="card bg-base-100 shadow-xl relative lg:mt-20 mt-10 ">
         <figure className=" ">
-          <img src={thumbnail} className="h-[550px] w-full object-cover" />
+          <img
+            src={thumbnail}
+            className="lg:h-[550px] h-[350px] w-full object-cover"
+          />
         </figure>
         <div className="card-body">
           <h2 className="font-bold text-4xl">{assignment_title}</h2>
           <p>{description}</p>
-          <div className="flex justify-between items-center mt-10">
+          <div className="flex flex-col-reverse lg:flex-row justify-between items-center mt-10">
             <div className="border p-5 rounded border-primary">
               <p className="text-2xl text-purple-600 font-medium">
                 Marks: {marks}
               </p>
               <p>Deadline: {formatDateForDisplay(dueDate)}</p>
             </div>
-            <div className="mt-5">
+            <div className="lg:mt-5 mb-10">
               <p className="text-3xl bg-purple-600 text-white py-1 px-2 rounded max-w-max uppercase">
                 {difficulty}
               </p>
@@ -126,7 +129,7 @@ const AssignmentDetails = () => {
       {isModalOpen && (
         <dialog
           id="my_modal_5"
-          className="modal modal-bottom sm:modal-middle"
+          className="modal modal-middle md:w-10/12 w-96 "
           open
         >
           <div className="modal-box ">

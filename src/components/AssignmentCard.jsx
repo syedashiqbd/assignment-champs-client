@@ -69,38 +69,45 @@ const AssignmentCard = ({ assignment, refetch }) => {
   };
 
   return (
-    <div className="card card-side bg-base-100 shadow-xl relative border ">
-      <figure className="w-1/3 h-[350px]  ">
-        <img src={thumbnail} className="h-[350px] w-full object-cover" />
+    <div className="card lg:card-side bg-base-100 shadow-xl relative border flex flex-col ">
+      <figure className="lg:w-1/3 lg:h-[350px] md:h-[300px]  ">
+        <img
+          src={thumbnail}
+          className="lg:h-[350px] lg:w-full  w-full object-cover "
+        />
       </figure>
       <div className="card-body">
         <h2 className="font-bold text-4xl">{assignment_title}</h2>
         <p>
           {description.length > 50 ? description.slice(0, 50) : description}...
         </p>
-        <div>
-          <p className="text-2xl text-purple-600 font-medium">Marks: {marks}</p>
-          <p className="bg-green-700 inline text-white p-1 text-sm ">
-            {submitBy}
-          </p>
-          <p>{formatDateForDisplay(dueDate)}</p>
-          {/* <p>{submitBy}</p> */}
-        </div>
-        <div className="mt-5">
-          <p
-            className={
-              difficulty === 'easy'
-                ? 'text-3xl bg-green-600 text-white py-1 px-2 rounded max-w-max uppercase'
-                : difficulty === 'medium'
-                ? 'text-3xl bg-orange-400 text-white py-1 px-2 rounded max-w-max uppercase'
-                : 'text-3xl bg-primary text-white py-1 px-2 rounded max-w-max uppercase'
-            }
-          >
-            {difficulty}
-          </p>
+        <div className="lg:block flex  justify-between mt-2">
+          <div>
+            <p className="text-2xl text-purple-600 font-medium">
+              Marks: {marks}
+            </p>
+            <p className="bg-green-700 inline text-white p-1 text-sm ">
+              {submitBy}
+            </p>
+            <p>{formatDateForDisplay(dueDate)}</p>
+            {/* <p>{submitBy}</p> */}
+          </div>
+          <div className="mt-5 ">
+            <p
+              className={
+                difficulty === 'easy'
+                  ? 'lg:text-3xl text-xl bg-green-600 text-white py-1 px-2 rounded max-w-max uppercase'
+                  : difficulty === 'medium'
+                  ? 'lg:text-3xl text-xl bg-orange-400 text-white py-1 px-2 rounded max-w-max uppercase'
+                  : 'lg:text-3xl text-xl bg-primary text-white py-1 px-2 rounded max-w-max uppercase'
+              }
+            >
+              {difficulty}
+            </p>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col justify-end items-end gap-4 p-5">
+      <div className="flex lg:flex-col lg:justify-end justify-center items-end gap-4 p-5">
         {user?.email ? (
           <button onClick={handleUpdate} className="btn btn-primary ">
             Update <br /> Assignment
@@ -117,7 +124,8 @@ const AssignmentCard = ({ assignment, refetch }) => {
       {user?.email ? (
         <button
           onClick={handleDelete}
-          className="btn btn-circle bg-primary text-white hover:bg-white hover:text-primary absolute -right-5 -top-6"
+          className="btn btn-circle btn-sm bg-primary text-white hover:bg-white hover:text-primary absolute 
+           -top-3 -right-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

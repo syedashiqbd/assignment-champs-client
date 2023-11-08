@@ -81,7 +81,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
   };
 
   return (
-    <div className="lg:w-[1280px] w-[400px] mx-auto">
+    <div className="lg:w-[1280px] md:w-[780px] w-[400px] mx-auto">
       <div className="max-w-sm h-[550px] card bg-base-100 shadow-xl relative rounded-lg  ">
         <figure className=" ">
           <img src={thumbnail} className="h-[300px] w-full object-cover" />
@@ -143,7 +143,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
       {isModalOpen && (
         <dialog
           id="my_modal_5"
-          className="modal modal-bottom max-w-max mx-auto"
+          className="modal modal-middle max-w-max mx-auto"
           open
         >
           <div className="modal-box ">
@@ -223,15 +223,14 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
       {isPdfOpen && (
         <dialog
           id="my_modal_5"
-          className="modal modal-top max-w-max  mx-auto"
+          className="modal lg:modal-top modal-middle lg:w-8/12   mx-auto"
           open
         >
           <div className="modal-box text-center ">
             <iframe
               src={pdf}
-              width="740"
-              height="1140"
               allow="autoplay"
+              className="w-full lg:w-[1040px]  h-screen"
             ></iframe>
 
             <button

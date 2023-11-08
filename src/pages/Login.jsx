@@ -45,12 +45,12 @@ const Login = () => {
 
   return (
     <div>
-      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border border-amber-600 rounded-lg">
-        <div className="w-1/2 my-auto">
+      <div className="flex flex-col lg:flex-row justify-between lg:w-[1280px] md:w-[780px] w-[400px] mx-auto border border-amber-600 rounded-lg mt-10">
+        <div className="lg:w-1/2 w-6/12 lg:my-auto mx-auto py-10 lg:py-0">
           <img src={logIn} className="w-[460px]" />
         </div>
-        <div className="w-1/2">
-          <div className="w-full  p-16 ">
+        <div className="lg:w-1/2">
+          <div className="w-full  lg:p-16 p-3 ">
             <h1 className="text-[40px] font-semibold text-center">Login</h1>
 
             <form onSubmit={handleLogin} className="card-body">
@@ -104,7 +104,7 @@ const Login = () => {
                   </div>
                 </Link>
               </div>
-              <p className="text-center mt-6 text-lg">
+              <p className="text-center mt-6 lg:text-lg">
                 Do not have an account?{' '}
                 <Link to="/register" className="text-primary  font-semibold">
                   Register

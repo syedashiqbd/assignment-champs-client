@@ -29,7 +29,7 @@ const SubmitAssignment = () => {
     return <h1 className="text-center text-primary">Error Loading Data !!!</h1>;
 
   return (
-    <div className="lg:w-[1280px] w-[400px] mx-auto">
+    <div className="lg:w-[1280px] md:w-[780px] w-[400px] mx-auto">
       <div className="flex justify-between items-center mt-20  mb-10 border-purple-700 border-2 py-7 px-4 rounded-lg">
         <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-green-600 ">
           Submitted Assignment
@@ -38,7 +38,7 @@ const SubmitAssignment = () => {
       {isLoading ? (
         <Loading1></Loading1>
       ) : (
-        <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 justify-between">
           {submitAssignments?.map((submitAssignment) => (
             <SubmitAssignmentCard
               key={submitAssignment._id}

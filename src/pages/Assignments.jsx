@@ -49,9 +49,9 @@ const Assignments = () => {
 
   return (
     <div>
-      <div className="lg:w-[1280px] w-[400px] mx-auto">
-        <div className="flex justify-between items-center mt-20  mb-10 border-purple-700 border-2 py-7 px-4 rounded-lg">
-          <h1 className="text-4xl text-primary font-semibold pl-5 border-l-8 border-purple-600 ">
+      <div className="lg:w-[1280px] md:w-[780px] w-[400px] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-6 justify-between items-center mt-20  mb-10 border-purple-700 border-2 py-7 px-4 rounded-lg">
+          <h1 className="lg:text-4xl text-xl text-primary font-semibold pl-5 lg:border-l-8 lg:border-b-0  border-b-8 border-purple-600 pb-4 lg:pb-0 ">
             All Assignment at a Glance
           </h1>
           <div>
@@ -70,7 +70,7 @@ const Assignments = () => {
         {isLoading ? (
           <Loading1></Loading1>
         ) : (
-          <div className="grid gap-8">
+          <div className="grid lg:gap-8 md:gap-4 gap-3">
             {assignments?.map((assignment) => (
               <AssignmentCard
                 key={assignment._id}

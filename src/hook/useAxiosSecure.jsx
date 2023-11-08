@@ -1,10 +1,10 @@
 import axios from 'axios';
-import useAuth from './useAuth';
-import { useEffect } from 'react';
+// import useAuth from './useAuth';
+// import { useEffect } from 'react';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000',
-  // baseURL: 'https://assignment-champs-server.vercel.app',
+  // baseURL: 'http://localhost:5000',
+  baseURL: 'https://assignment-champs-server.vercel.app',
   withCredentials: true,
 });
 

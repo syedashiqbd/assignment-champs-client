@@ -53,9 +53,9 @@ const CreateAssignment = () => {
 
   return (
     <div>
-      <div className="lg:w-[1200px] w-[400px] mx-auto">
-        <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center ">
-          <h1 className="divider mb-20 text-primary lg:text-4xl text-xl font-semibold">
+      <div className="lg:w-[1200px] md:w-[780px] w-[400px] mx-auto">
+        <div className=" lg:py-8 lg:px-28 py-6 px-10 text-center w-10/12 mx-auto">
+          <h1 className="divider lg:mb-20 mb-10 text-primary lg:text-4xl text-xl font-semibold">
             Add Assignment
           </h1>
           <form onSubmit={handleAddAssignment}>

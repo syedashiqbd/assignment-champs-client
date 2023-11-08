@@ -49,9 +49,9 @@ const Register = () => {
 
   return (
     <div>
-      <div className="flex justify-between lg:w-[1280px] w-[400px] mx-auto border border-purple-600 rounded-lg">
-        <div className="w-1/2">
-          <div className="w-full  p-16 ">
+      <div className="flex flex-col-reverse lg:flex-row justify-between lg:w-[1280px] md:w-[780px] w-[400px] mx-auto border border-purple-600 rounded-lg mt-10">
+        <div className="lg:w-1/2">
+          <div className="w-full lg:p-16 p-3 ">
             <h1 className="text-[40px] font-semibold text-center">Register</h1>
 
             <form onSubmit={handleRegister} className="card-body">
@@ -114,7 +114,7 @@ const Register = () => {
                 <button className="btn bg-primary text-white">Register</button>
               </div>
 
-              <p className="text-center mt-6 text-lg">
+              <p className="text-center mt-6 lg:text-lg">
                 Already have an account?{' '}
                 <Link to="/login" className="text-primary  font-semibold">
                   Login
@@ -123,7 +123,7 @@ const Register = () => {
             </form>
           </div>
         </div>
-        <div className="w-1/2 my-auto ">
+        <div className="lg:w-1/2 w-6/12 lg:my-auto mx-auto py-10 lg:py-0 ">
           <img src={register} className="w-[460px] mx-auto" />
         </div>
       </div>
