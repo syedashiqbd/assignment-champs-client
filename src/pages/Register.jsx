@@ -1,12 +1,11 @@
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+
 import register from '../assets/register.svg';
 import useAuth from '../hook/useAuth';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { updateProfile } from 'firebase/auth';
+import { motion } from 'framer-motion';
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -48,7 +47,12 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
       <div className="flex flex-col-reverse lg:flex-row justify-between lg:w-[1280px] md:w-[780px] w-[400px] mx-auto border border-purple-600 rounded-lg mt-10">
         <div className="lg:w-1/2">
           <div className="w-full lg:p-16 p-3 ">
@@ -127,7 +131,7 @@ const Register = () => {
           <img src={register} className="w-[460px] mx-auto" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Register;

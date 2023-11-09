@@ -30,7 +30,6 @@ const Assignments = () => {
   });
 
   const totalCount = Math.ceil(total / limit);
-  console.log(totalCount);
   const totalButton = [...Array(totalCount).keys()];
 
   const handlePrevious = () => {
@@ -43,7 +42,6 @@ const Assignments = () => {
       setPage(page + 1);
     }
   };
-  console.log(page);
   if (isError)
     return <h1 className="text-center text-primary">Error Loading Data !!!</h1>;
 

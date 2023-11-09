@@ -16,6 +16,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
     status,
     givenMark,
     markBy,
+    feedback,
   } = submitAssignment;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,12 +82,12 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
   };
 
   return (
-    <div className="lg:w-[1280px] md:w-[780px] w-[400px] mx-auto">
-      <div className="max-w-sm h-[550px] card bg-base-100 shadow-xl relative rounded-lg  ">
-        <figure className=" ">
-          <img src={thumbnail} className="h-[300px] w-full object-cover" />
+    <div>
+      <div className="card bg-base-100 shadow-xl relative rounded-lg h-[650px] flex flex-col ">
+        <figure className="flex-shrink-0 ">
+          <img src={thumbnail} className="h-[250px] w-full object-cover" />
         </figure>
-        <div className="card-body">
+        <div className="flex-grow  p-3">
           <h2 className="font-bold text-2xl ">{assignment_title}</h2>
           <p>Submitted by: {name}</p>
           <div className="flex justify-between items-center mt-5 ">
@@ -120,7 +121,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
           </button>
         </div>
 
-        <div className="p-6  w-full text-center">
+        <div className="p-6  w-full text-center mt-auto">
           {status === 'pending' ? (
             <button
               className="btn btn-success border-none w-full"
@@ -134,6 +135,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
                 You got : {givenMark}
               </p>
               <p>Evaluated by: {markBy}</p>
+              <p className="border text-blue-600 mt-4">Feedback : {feedback}</p>
             </div>
           )}
         </div>
@@ -141,11 +143,7 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
 
       {/* Modal */}
       {isModalOpen && (
-        <dialog
-          id="my_modal_5"
-          className="modal modal-middle max-w-max mx-auto"
-          open
-        >
+        <dialog id="my_modal_5" className="modal modal-middle mx-auto" open>
           <div className="modal-box ">
             <form onSubmit={handleSubmit} method=" modal-action">
               <div className="grid gap-3 grid-cols-1">
@@ -221,16 +219,12 @@ const SubmitAssignmentCard = ({ submitAssignment, refetch }) => {
       )}
       {/* Pdf Modal */}
       {isPdfOpen && (
-        <dialog
-          id="my_modal_5"
-          className="modal lg:modal-top modal-middle lg:w-8/12   mx-auto"
-          open
-        >
-          <div className="modal-box text-center ">
+        <dialog id="my_modal_5" className="modal  modal-middle  mx-auto" open>
+          <div className="modal-box w-11/12 max-w-5xl text-center  ">
             <iframe
               src={pdf}
               allow="autoplay"
-              className="w-full lg:w-[1040px]  h-screen"
+              className="w-full h-screen"
             ></iframe>
 
             <button

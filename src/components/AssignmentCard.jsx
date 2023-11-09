@@ -3,6 +3,7 @@ import useAuth from '../hook/useAuth';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../hook/useAxiosSecure';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const AssignmentCard = ({ assignment, refetch }) => {
   const axiosInstance = useAxiosSecure();
@@ -69,7 +70,14 @@ const AssignmentCard = ({ assignment, refetch }) => {
   };
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl relative border flex flex-col ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+      className="card lg:card-side bg-base-100 shadow-xl relative border flex
+      flex-col "
+    >
       <figure className="lg:w-1/3 lg:h-[350px] md:h-[300px]  ">
         <img
           src={thumbnail}
@@ -145,7 +153,7 @@ const AssignmentCard = ({ assignment, refetch }) => {
       ) : (
         ''
       )}
-    </div>
+    </motion.div>
   );
 };
 export default AssignmentCard;

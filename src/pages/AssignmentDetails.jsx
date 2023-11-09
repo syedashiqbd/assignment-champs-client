@@ -129,7 +129,7 @@ const AssignmentDetails = () => {
       {isModalOpen && (
         <dialog
           id="my_modal_5"
-          className="modal modal-middle md:w-10/12 w-96 "
+          className="modal modal-middle md:w-10/12 w-96 mx-auto "
           open
         >
           <div className="modal-box ">

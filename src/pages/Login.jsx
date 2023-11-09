@@ -4,6 +4,7 @@ import logIn from '../assets/login.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hook/useAuth';
 import toast from 'react-hot-toast';
+import { motion } from 'framer-motion';
 
 const Login = () => {
   const { login, logInWithGoogle } = useAuth();
@@ -44,7 +45,12 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
       <div className="flex flex-col lg:flex-row justify-between lg:w-[1280px] md:w-[780px] w-[400px] mx-auto border border-amber-600 rounded-lg mt-10">
         <div className="lg:w-1/2 w-6/12 lg:my-auto mx-auto py-10 lg:py-0">
           <img src={logIn} className="w-[460px]" />
@@ -114,7 +120,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Login;

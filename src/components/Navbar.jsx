@@ -19,7 +19,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
-            : 'py-1 px-2 mr-2 text-blue-600'
+            : 'py-1 px-2 mr-2 text-[#3149fd]'
         }
       >
         Home
@@ -29,7 +29,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
-            : 'py-1 px-2 mr-2 text-blue-600'
+            : 'py-1 px-2 mr-2 text-[#3149fd]'
         }
       >
         Assignments
@@ -39,7 +39,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
-            : 'py-1 px-2 mr-2 text-blue-600 '
+            : 'py-1 px-2 mr-2 text-[#3149fd] '
         }
       >
         Create Assignment
@@ -49,7 +49,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
-            : 'py-1 px-2 mr-2 text-blue-600 '
+            : 'py-1 px-2 mr-2 text-[#3149fd] '
         }
       >
         Submitted Assignment
@@ -59,7 +59,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2  '
-            : 'py-1 px-2 mr-2 text-blue-600 '
+            : 'py-1 px-2 mr-2 text-[#3149fd] '
         }
       >
         My Assignment
@@ -70,7 +70,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? ' bg-primary text-white py-1 px-2 rounded  mr-2 '
-            : 'py-1 px-2 mr-2 text-blue-600'
+            : 'py-1 px-2 mr-2 text-[#3149fd]'
         }
       >
         Register
@@ -86,9 +86,9 @@ const Navbar = () => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
-                fill="none"
+                fill="#fff"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="#fff"
               >
                 <path
                   strokeLinecap="round"
@@ -105,7 +105,9 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <img src={logo} className="w-20" />
+          <Link to="/">
+            <img src={logo} className="lg:w-24 w-16" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>

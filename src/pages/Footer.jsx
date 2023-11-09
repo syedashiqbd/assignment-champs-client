@@ -2,9 +2,9 @@ import logo from '../assets/Assignment.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 mt-10 ">
+    <footer className="bg-[#111827] mt-10 ">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="flex justify-center text-primary">
+        <div className="flex justify-center text-[#3149fd]">
           <img src={logo} className="w-40" />
         </div>
 
@@ -16,7 +16,7 @@ const Footer = () => {
         <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
           <li>
             <a
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
               href="/"
             >
               About
@@ -25,7 +25,7 @@ const Footer = () => {
 
           <li>
             <a
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
               href="/"
             >
               Careers
@@ -34,7 +34,7 @@ const Footer = () => {
 
           <li>
             <a
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
               href="/"
             >
               History
@@ -43,7 +43,7 @@ const Footer = () => {
 
           <li>
             <a
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
               href="/"
             >
               Services
@@ -52,7 +52,7 @@ const Footer = () => {
 
           <li>
             <a
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
               href="/"
             >
               Projects
@@ -61,7 +61,7 @@ const Footer = () => {
 
           <li>
             <a
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
               href="/"
             >
               Blog
@@ -75,7 +75,7 @@ const Footer = () => {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
             >
               <span className="sr-only">Facebook</span>
               <svg
@@ -98,7 +98,7 @@ const Footer = () => {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
             >
               <span className="sr-only">Instagram</span>
               <svg
@@ -121,7 +121,7 @@ const Footer = () => {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
             >
               <span className="sr-only">Twitter</span>
               <svg
@@ -140,7 +140,7 @@ const Footer = () => {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
             >
               <span className="sr-only">GitHub</span>
               <svg
@@ -163,7 +163,7 @@ const Footer = () => {
               href="/"
               rel="noreferrer"
               target="_blank"
-              className="text-primary transition hover:text-gray-700/75"
+              className="text-[#3149fd] transition hover:text-gray-700/75"
             >
               <span className="sr-only">Dribbble</span>
               <svg
