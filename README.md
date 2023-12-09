@@ -15,4 +15,10 @@
 - User can see top right on the navbar either he/she logged In or Out with their account Avatar.
 - User can visit our site from their Mobile. We responsive our site carefully for our mobile and tablet user as it is very much important.
 
+# Technology Usage:
+### React
+### Node.js
+### Express.js
+### MongoDB
+
 Thanks for visiting us!!
